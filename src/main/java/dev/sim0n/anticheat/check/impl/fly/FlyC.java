@@ -19,8 +19,8 @@ public class FlyC extends PositionCheck {
     @Override
     public void handle(CustomLocation to, CustomLocation from, MovementData data) {
         if (!data.isOnGround() && to.isOnGround()) {
-            if (++vl > 1.2) {
-                vl = 1.2;
+            if (++vl > 2.2) {
+                vl = 2.2;
 
                 handleViolation(new PlayerViolation(this, 1));
             }

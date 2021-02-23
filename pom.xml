@@ -36,10 +36,10 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- CraftBukkit / NMS -->
+        <!-- Spigot / NMS -->
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
@@ -62,7 +62,7 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
-            <version>3.12.6-SNAPSHOT</version>
+            <version>3.12.7</version>
             <scope>provided</scope>
         </dependency>
 
