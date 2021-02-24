@@ -46,7 +46,7 @@ public class ActionTracker extends PlayerTracker {
             }
         }, ServerBoundPacket.PLAY_USE_ENTITY.getId());
 
-        registerIncomingPostHandler(CPacketPlayer.class, packet -> {
+        registerIncomingPreHandler(CPacketPlayer.class, packet -> {
             ++lastAttack;
         }, PacketHelper.FLYING_IDS);
     }

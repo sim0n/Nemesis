@@ -30,7 +30,7 @@ public class AutoClickerB extends PacketCheck {
                 if (delays.size() == 40) {
                     double stDev = MathUtil.getStandardDeviation(delays);
 
-                    if (stDev < 0.5) {
+                    if (stDev < 0.45) {
                         int level = (int) (Math.ceil(1.1D - stDev) * 1.5);
 
                         if (++vl > 1) {

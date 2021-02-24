@@ -10,6 +10,7 @@ import dev.sim0n.anticheat.util.data.CustomLocation;
 import dev.sim0n.anticheat.violation.handler.ViolationHandler;
 import dev.sim0n.anticheat.violation.impl.DetailedPlayerViolation;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
@@ -46,7 +47,7 @@ public class Speed extends PositionCheck {
                 movementSpeed *= LAND_MOVEMENT_FACTOR / Math.pow(blockFriction, 3);
 
                 // They're moving in another direction
-                if (moveAngle > 80)
+                if (moveAngle > 135)
                     movementSpeed /= 1.05;
 
                 /*
@@ -60,15 +61,15 @@ public class Speed extends PositionCheck {
                 blockFriction = AIR_FRICTION;
             }
 
-            Vector velocity = movementTracker.getVelocity();
+            Vector velocity = movementTracker.getCurrentVelocity();
             if (velocity != null)
                 movementSpeed += MathUtil.hypot(velocity.getX(), velocity.getZ());
 
             double speedup = (offsetH - lastOffsetH) / movementSpeed;
 
-            if (DIRECTIONS.stream().anyMatch(direction -> Math.abs(direction - moveAngle) < 0.0001F)) {
+            /*if (DIRECTIONS.stream().anyMatch(direction -> Math.abs(direction - moveAngle) < 0.0001F)) {
                 // they're strafing, maybe do something about it or make another check for it
-            }
+            }*/
 
             if (speedup > 1.001 && !movementTracker.isTeleporting()) {
                 if (offsetH > 0.2) {

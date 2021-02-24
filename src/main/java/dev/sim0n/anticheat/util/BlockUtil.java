@@ -35,33 +35,33 @@ public class BlockUtil {
         int maxZ = MathHelper.floor(boundingBox.f);
 
         for (int x = minX; x <= maxX; ++x) {
-            // need to go 1 down for fences and walls
-            for (int y = minY - 1; y <= maxY; ++y) {
-                for (int z = minZ; z <= maxZ; ++z) {
-                    BlockPosition blockPosition = new BlockPosition(x, y, z);
-                    // make sure the chunk is loaded
-                    if (!world.isLoaded(blockPosition))
-                        continue;
+            for (int z = minZ; z <= maxZ; ++z) {
+                // We need to actually make sure the chunk is loaded
+                if (world.isLoaded(new BlockPosition(x, 64, z))) {
+                    // need to go 1 down for fences and walls
+                    for (int y = minY - 1; y <= maxY; ++y) {
+                        BlockPosition blockPosition = new BlockPosition(x, y, z);
 
-                    Block block = world.getType(blockPosition).getBlock();
+                        Block block = world.getType(blockPosition).getBlock();
 
-                    AxisAlignedBB blockBB = BBUtil.getBoundingBoxes()[CraftMagicNumbers.getId(block)];
+                        AxisAlignedBB blockBB = BBUtil.getBoundingBoxes()[CraftMagicNumbers.getId(block)];
 
-                    if (blockBB != null) {
-                        // Since NMS is stupid and doesn't use multiple bounding boxes we have to do this
-                        blockBB = blockBB.c(x, y, z);
-                    } else {
-                        /*
-                         * The default implementation of {@link Block#a(World, BlockPosition, IBlockData)} doesn't use
-                         * the block data. However stuff like fences, etc will use the block data to determine places
-                         * it connects to etc
-                         */
-                        blockBB = block.a(world, blockPosition, block.getBlockData());
-                    }
+                        if (blockBB != null) {
+                            // Since NMS is stupid and doesn't use multiple bounding boxes we have to do this
+                            blockBB = blockBB.c(x, y, z);
+                        } else {
+                            /*
+                             * The default implementation of {@link Block#a(World, BlockPosition, IBlockData)} doesn't use
+                             * the block data. However stuff like fences, etc will use the block data to determine places
+                             * it connects to etc
+                             */
+                            blockBB = block.a(world, blockPosition, block.getBlockData());
+                        }
 
-                    // {@link AxisAlignedBB#b(AxisAlignedBB)} is a function to check if 2 bbs intersect
-                    if (blockBB != null && boundingBox.b(blockBB)) {
-                        bbs.add(blockBB);
+                        // {@link AxisAlignedBB#b(AxisAlignedBB)} is a function to check if 2 bbs intersect
+                        if (blockBB != null && boundingBox.b(blockBB)) {
+                            bbs.add(blockBB);
+                        }
                     }
                 }
             }

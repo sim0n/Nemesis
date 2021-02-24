@@ -14,7 +14,7 @@ public class BadPacketsA extends PacketCheck {
     private int streak;
 
     public BadPacketsA(PlayerData playerData) {
-        super(playerData, "Bad Packets A", new ViolationHandler(3, 60000L));
+        super(playerData, "Bad Packets A", new ViolationHandler(4, 60000L));
     }
 
     @Override

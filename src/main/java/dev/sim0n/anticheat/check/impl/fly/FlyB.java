@@ -45,7 +45,7 @@ public class FlyB extends PositionCheck {
                         handleViolation(new DetailedPlayerViolation(this, 1, String.format("%s -> %s", offsetY, expectedOffsetY)));
                     }
                 } else {
-                    decreaseVl(0.345);
+                    decreaseVl(0.45);
                 }
             }
 

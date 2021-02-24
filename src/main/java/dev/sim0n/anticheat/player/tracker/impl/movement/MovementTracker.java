@@ -30,7 +30,7 @@ public class MovementTracker extends PlayerTracker {
 
     private Vector teleportPosition;
 
-    private Vector velocity;
+    private Vector currentVelocity, velocity;
 
     private int velocityH, velocityV;
     private int velocityTicks;
@@ -133,12 +133,15 @@ public class MovementTracker extends PlayerTracker {
 
         registerIncomingPostHandler(CPacketPlayer.class, packet -> {
             ++teleportTicks;
+            currentVelocity = null;
         }, PacketHelper.FLYING_IDS);
 
         registerOutgoingPreHandler(SPacketEntityVelocity.class, packet -> {
             if (packet.getEntityId() == playerData.getEntityId()) {
                 playerData.sendTransaction((uid) -> {
                     velocity = new Vector(packet.getMotionX() / 8000D, packet.getMotionY() / 8000D, packet.getMotionZ() / 8000D);
+
+                    currentVelocity = velocity.clone();
 
                     velocityH = (int) Math.ceil((Math.abs(velocity.getX()) + Math.abs(velocity.getZ())) / 2D + 2D) * 4;
                     velocityV = (int) Math.ceil(Math.pow(Math.abs(velocity.getY()) + 2, 2)) * 2;
@@ -151,6 +154,10 @@ public class MovementTracker extends PlayerTracker {
 
     public boolean isTeleporting() {
         return teleportTicks <= 1;
+    }
+
+    public boolean isTeleporting(int ticks) {
+        return teleportTicks <= ticks;
     }
 
     public boolean isTeleportPending() {
