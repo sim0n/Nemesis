@@ -24,7 +24,7 @@ mvn package
 ```
 
 ### Usage
-If you use this base and or sell it or take anything from it all I ask for is credit.
+If you use this base and sell it or take anything from it all I ask for is credit.
 
 ### Community
 If you want to join the discord for Nemesis to talk, ask questions or anything then feel free to join [the discord](https://discord.gg/kxC2FYMfNZ)
