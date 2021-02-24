@@ -17,6 +17,12 @@ Nemesis is an open source anti-cheat with a main purpose of elevating Minecraft 
 ### Notes
 Nemesis already contains quite a few checks to get you started, they're not perfect, but they're good enough.
 
+#### Compiling
+As there is no public repo (that I'm aware of) that hosts CraftBukkit you'll have to build it yourself with [BuildTools](https://www.spigotmc.org/wiki/buildtools/#1-8-8). After this simply use the default goal 
+```xml
+mvn package
+```
+
 ### Usage
 If you use this base and or sell it or take anything from it all I ask for is credit.
 
