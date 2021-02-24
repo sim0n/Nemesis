@@ -62,6 +62,8 @@ public class PacketHandler extends ChannelDuplexHandler {
         super.write(channelHandlerContext, o, channelPromise);
 
         try {
+            playerData.getCheckData().getPacketChecks().forEach(check -> check.handle(packet));
+
             handlePacket(packet, false, false);
         } catch (Throwable t) {
             t.printStackTrace();

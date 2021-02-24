@@ -2,10 +2,12 @@ package dev.sim0n.anticheat.check.impl.timer;
 
 import dev.sim0n.anticheat.check.base.packet.PacketCheck;
 import dev.sim0n.anticheat.net.packet.system.EPacket;
+import dev.sim0n.anticheat.net.packet.system.impl.clientbound.SPacketPosLook;
 import dev.sim0n.anticheat.net.packet.system.impl.serverbound.CPacketPlayer;
 import dev.sim0n.anticheat.player.PlayerData;
 import dev.sim0n.anticheat.violation.handler.ViolationHandler;
 import dev.sim0n.anticheat.violation.impl.DetailedPlayerViolation;
+import org.bukkit.Bukkit;
 
 /**
  * The minecraft client will retain a balance of 50ms between each player packet.
@@ -28,14 +30,6 @@ public class Timer extends PacketCheck {
             if (lastPlayerPacketTime != null) {
                 long delay = now - lastPlayerPacketTime;
 
-                /*
-                 * {@link MovementTracker#isTeleporting()} checks the last 2 ticks, this will only check
-                 * the tick that we actually teleported and if that's the current tick then we need to
-                 * account for the extra flying packet sent for teleport validation by reducing balance by 50 (1 tick)
-                 */
-                if (movementTracker.getTeleportTicks() == 0)
-                    balance -= 50L;
-
                 balance += 50L - delay;
 
                 if (balance > 50) {
@@ -55,6 +49,9 @@ public class Timer extends PacketCheck {
             }
 
             lastPlayerPacketTime = now;
+        } else if (packet instanceof SPacketPosLook) {
+            // We need to account for the extra flying packet the client sends when they confirm a teleport
+            balance -= 50L;
         }
     }
 }
