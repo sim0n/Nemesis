@@ -3,6 +3,7 @@ package dev.sim0n.anticheat.util;
 import dev.sim0n.anticheat.util.data.CustomLocation;
 import lombok.experimental.UtilityClass;
 import net.minecraft.server.v1_8_R3.*;
+import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.util.CraftMagicNumbers;
 
 import java.util.Arrays;
@@ -13,7 +14,7 @@ import java.util.Set;
 public class BlockUtil {
     private final Set<Byte> CLIMBABLE = new HashSet<>(Arrays.asList((byte) 65, (byte) 106));
     private final Set<Byte> LIQUIDS = new HashSet<Byte>() {{
-        for (int i = 7; i < 11; i++) {
+        for (int i = 8; i <= 11; i++) {
             add((byte) i);
         }
     }};
@@ -87,10 +88,12 @@ public class BlockUtil {
         int maxZ = MathHelper.floor(boundingBox.f);
 
         for (int x = minX; x <= maxX; ++x) {
-            for (int y = minY; y <= maxY; ++y) {
-                for (int z = minZ; z <= maxZ; ++z) {
-                    if (LIQUIDS.contains(getBlockId(world, x, y, z)))
-                        return true;
+            for (int z = minZ; z <= maxZ; ++z) {
+                if (world.isLoaded(new BlockPosition(x, 64, z))) {
+                    for (int y = minY; y <= maxY; ++y) {
+                        if (LIQUIDS.contains(getBlockId(world, x, y, z)))
+                            return true;
+                    }
                 }
             }
         }

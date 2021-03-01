@@ -33,7 +33,7 @@ public abstract class InversePacketOrderCheck extends PacketCheck {
             if (!sent)
                 return;
 
-            handleViolation(new PlayerViolation(this, 1));
+            handleViolation(new PlayerViolation(this));
         } else if (second.test(packet)) {
             sent = true;
         } else if (packet instanceof CPacketPlayer) {

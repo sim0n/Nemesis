@@ -22,7 +22,7 @@ public class FlyC extends PositionCheck {
             if (++vl > 2.5) {
                 vl = 2.5;
 
-                handleViolation(new PlayerViolation(this, 1));
+                handleViolation(new PlayerViolation(this));
             }
         } else {
             decreaseVl(0.225);

@@ -29,7 +29,7 @@ public class PingSpoofA extends PacketCheck {
 
             // The keep alive ping is significantly higher than the transaction ping
             if (keepAlivePing - 100 > transactionPing) {
-                handleViolation(new DetailedPlayerViolation(this, 1, String.format("K %s T %s", keepAlivePing, transactionPing)));
+                handleViolation(new DetailedPlayerViolation(this, String.format("K %s T %s", keepAlivePing, transactionPing)));
             }
 
             sent = false;

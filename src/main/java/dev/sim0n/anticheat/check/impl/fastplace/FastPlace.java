@@ -32,7 +32,7 @@ public class FastPlace extends PacketCheck {
                     if (avg < 4 && stDev < 0.15) {
                         String data = String.format("AVG %s SD %s", avg, stDev);
 
-                        handleViolation(new DetailedPlayerViolation(this, 1, data));
+                        handleViolation(new DetailedPlayerViolation(this, data));
                     }
 
                     delays.clear();

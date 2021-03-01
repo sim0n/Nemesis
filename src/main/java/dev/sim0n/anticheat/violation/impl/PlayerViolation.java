@@ -14,4 +14,10 @@ public class PlayerViolation extends AbstractPlayerViolation {
         this.level = level;
     }
 
+    public PlayerViolation(Check check) {
+        super(check);
+
+        this.level = 1;
+    }
+
 }

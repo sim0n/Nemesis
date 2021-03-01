@@ -81,4 +81,17 @@ public class MathUtil {
         // 1 second = 20 ticks
         return 20 / getAverage(values);
     }
+
+    /**
+     * Calculates the gcd of {@param a} and {@param b}
+     * @return The gcd
+     */
+    public double gcd(double a, double b) {
+        if (a < b)
+            return gcd(b, a);
+        else if (Math.abs(b) < 0.001) // base case
+            return a;
+        else
+            return gcd(b, a - Math.floor(a / b) * b);
+    }
 }

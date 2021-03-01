@@ -28,7 +28,7 @@ public class BadPacketsC extends PacketCheck {
                 case START_SPRINTING:
                 case STOP_SPRINTING:
                     if (sprint)
-                        handleViolation(new DetailedPlayerViolation(this, 1, "Sprint"));
+                        handleViolation(new DetailedPlayerViolation(this, "Sprint"));
 
                     sprint = true;
                     break;
@@ -36,7 +36,7 @@ public class BadPacketsC extends PacketCheck {
                 case START_SNEAKING:
                 case STOP_SNEAKING:
                     if (sneak)
-                        handleViolation(new DetailedPlayerViolation(this, 1, "Sneak"));
+                        handleViolation(new DetailedPlayerViolation(this, "Sneak"));
 
                     sneak = true;
                     break;

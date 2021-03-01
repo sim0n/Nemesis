@@ -6,6 +6,9 @@ import dev.sim0n.anticheat.util.data.CustomLocation;
 import dev.sim0n.anticheat.violation.handler.ViolationHandler;
 import dev.sim0n.anticheat.violation.impl.DetailedPlayerViolation;
 
+/**
+ * This will detect clients trying to move in rounded moves, very old clients may do this
+ */
 public class AimAssistA extends RotationCheck {
     private float suspiciousYaw;
 
@@ -18,14 +21,14 @@ public class AimAssistA extends RotationCheck {
         if (actionTracker.getLastAttack() > 20 * 60)
             return;
 
-        float diffYaw = Math.abs(to.getYaw() - from.getYaw());
+        float yawChange = Math.abs(to.getYaw() - from.getYaw());
 
-        if (diffYaw > 1F && Math.round(diffYaw) == diffYaw && diffYaw % 1.5F != 0F) {
-            if (diffYaw == suspiciousYaw) {
-                handleViolation(new DetailedPlayerViolation(this, 1, "Y " + diffYaw));
+        if (yawChange > 1F && Math.round(yawChange) == yawChange && yawChange % 1.5F != 0F) {
+            if (yawChange == suspiciousYaw) {
+                handleViolation(new DetailedPlayerViolation(this, "Y " + yawChange));
             }
 
-            suspiciousYaw = Math.round(diffYaw);
+            suspiciousYaw = Math.round(yawChange);
         } else {
             suspiciousYaw = 0F;
         }

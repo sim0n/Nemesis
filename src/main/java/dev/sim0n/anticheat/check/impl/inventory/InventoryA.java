@@ -20,7 +20,7 @@ public class InventoryA extends PacketCheck {
         if (packet instanceof CPacketClickWindow) {
             // 0 = player inventory
             if (((CPacketClickWindow) packet).getWindowId() == 0 && !actionTracker.isInventoryOpen()) {
-                handleViolation(new PlayerViolation(this, 1));
+                handleViolation(new PlayerViolation(this));
             }
         }
     }

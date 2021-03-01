@@ -18,7 +18,7 @@ public class AutoClickerA extends AirSwingCheck {
         double cps = MathUtil.getCps(samples);
 
         if (cps > 20) {
-            handleViolation(new DetailedPlayerViolation(this, 1, cps));
+            handleViolation(new DetailedPlayerViolation(this, cps));
         }
     }
 }

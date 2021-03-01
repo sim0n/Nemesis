@@ -39,7 +39,7 @@ public class VelocityC extends PositionCheck {
 
         if (ratio < 0.61 && !data.isCollidedHorizontally()) {
             if (++vl > 4) {
-                handleViolation(new DetailedPlayerViolation(this, 1, ratio));
+                handleViolation(new DetailedPlayerViolation(this, ratio));
             }
         } else {
             decreaseVl(1);

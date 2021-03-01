@@ -19,7 +19,7 @@ public class AutoClickerC extends AirSwingCheck {
 
         if (stDev < 0.45) {
             if (++vl > 2) {
-                handleViolation(new DetailedPlayerViolation(this, 1, stDev));
+                handleViolation(new DetailedPlayerViolation(this, stDev));
             }
         } else {
             decreaseVl(0.5);

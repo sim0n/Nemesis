@@ -45,7 +45,7 @@ public class AimAssistB extends RotationCheck {
                         .orElse(0);
 
                 if (Math.abs(max - min) < 0.1F) {
-                    handleViolation(new DetailedPlayerViolation(this, 1, Math.abs(max - min)));
+                    handleViolation(new DetailedPlayerViolation(this, Math.abs(max - min)));
                 }
             }
         }

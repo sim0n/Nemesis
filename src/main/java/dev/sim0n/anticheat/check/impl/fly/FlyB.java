@@ -42,7 +42,7 @@ public class FlyB extends PositionCheck {
 
                 if (difference > TOLERANCE) {
                     if (++vl > limit) {
-                        handleViolation(new DetailedPlayerViolation(this, 1, String.format("%s -> %s", offsetY, expectedOffsetY)));
+                        handleViolation(new DetailedPlayerViolation(this, String.format("%s -> %s", offsetY, expectedOffsetY)));
                     }
                 } else {
                     decreaseVl(0.45);

@@ -23,6 +23,6 @@ public class BadPacketsB extends RotationCheck {
         float pitch = Math.abs(to.getPitch());
 
         if (pitch > 90F)
-            handleViolation(new DetailedPlayerViolation(this, 1, pitch));
+            handleViolation(new DetailedPlayerViolation(this, pitch));
     }
 }

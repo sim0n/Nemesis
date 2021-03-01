@@ -18,13 +18,13 @@ public class VelocityA extends PositionCheck {
     @Override
     public void handle(CustomLocation to, CustomLocation from, MovementData data) {
         if (movementTracker.getCurrentVelocity() != null && !movementTracker.isTeleporting(5)) {
-            if (to.getY() > from.getY() || data.isUnderBlock()) {
+            if (to.getY() > from.getY() || data.isUnderBlock() || from.isOnGround() && !to.isOnGround()) {
                 decreaseVl(0.1);
                 return;
             }
 
             if (++vl > 1) {
-                handleViolation(new PlayerViolation(this, 1));
+                handleViolation(new PlayerViolation(this));
             }
         }
     }

@@ -12,4 +12,10 @@ public class DetailedPlayerViolation extends PlayerViolation {
 
         this.data = String.valueOf(data);
     }
+
+    public DetailedPlayerViolation(Check check, Object data) {
+        super(check, 1);
+
+        this.data = String.valueOf(data);
+    }
 }

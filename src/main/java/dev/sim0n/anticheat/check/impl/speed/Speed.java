@@ -74,7 +74,7 @@ public class Speed extends PositionCheck {
             if (speedup > 1.001 && !movementTracker.isTeleporting()) {
                 if (offsetH > 0.2) {
                     if (++vl > 1) {
-                        handleViolation(new DetailedPlayerViolation(this, 1, speedup));
+                        handleViolation(new DetailedPlayerViolation(this, speedup));
                     }
                 } else {
                     decreaseVl(0.001);

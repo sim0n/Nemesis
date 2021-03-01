@@ -30,7 +30,7 @@ public class VelocityB extends PositionCheck {
         if (from.isOnGround() && !to.isOnGround() && !data.isCollidedVertically()) {
             if (ratio < 0.995 && offsetY != JUMP_MOMENTUM) { // We want to ignore them if they're jumping
                 if (++vl > 2) {
-                    handleViolation(new DetailedPlayerViolation(this, 1, ratio));
+                    handleViolation(new DetailedPlayerViolation(this, ratio));
                 }
             } else {
                 decreaseVl(0.1);

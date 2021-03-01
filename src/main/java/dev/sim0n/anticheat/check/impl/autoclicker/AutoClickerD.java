@@ -19,7 +19,7 @@ public class AutoClickerD extends AirSwingCheck {
 
         if (kurtosis < 0D) {
             if (++vl > 1) {
-                handleViolation(new DetailedPlayerViolation(this, 1, kurtosis));
+                handleViolation(new DetailedPlayerViolation(this, kurtosis));
             }
         } else {
             decreaseVl(0.5);

@@ -44,7 +44,7 @@ public abstract class PostActionCheck extends PacketCheck {
                 if (++vl > 3) {
                     vl = 3;
 
-                    handleViolation(new PlayerViolation(this, 1));
+                    handleViolation(new PlayerViolation(this));
                 }
             } else {
                 decreaseVl(0.2);

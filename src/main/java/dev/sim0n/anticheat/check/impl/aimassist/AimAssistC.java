@@ -35,7 +35,7 @@ public class AimAssistC extends RotationCheck {
 
                     if (vl + passes == 200) {
                         if (vl == 0 || vl == 200)
-                            handleViolation(new DetailedPlayerViolation(this, 1, vl));
+                            handleViolation(new DetailedPlayerViolation(this, vl));
 
                         vl = passes = 0;
                     }
